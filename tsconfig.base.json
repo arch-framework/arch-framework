@@ -15,7 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@arch-framework/common": ["common/src/index.ts"]
+            "@arch-framework/common": ["libs/common/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

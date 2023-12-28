@@ -1,0 +1,7 @@
+{
+    "name": "@arch-framework/common",
+    "version": "0.0.1",
+    "sideEffects": false,
+    "dependencies": {},
+    "peerDependencies": {}
+}

@@ -1,0 +1,1 @@
+export const JSON_RPC_PARSE_ERROR_CODE = -32700;

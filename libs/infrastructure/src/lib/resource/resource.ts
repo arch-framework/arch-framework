@@ -21,11 +21,11 @@ export abstract class ArchResourceAbstract<RequestParams extends Record<string, 
 
     private readonly urlFactory: ArchResourceUrlFactory;
 
+    private readonly configMap: ArchResourceServiceConfigMap;
+
     protected readonly logger: ArchLogger;
 
-    protected readonly config: ArchResourceServiceConfig;
-
-    protected constructor(
+    constructor(
         http: HttpClient,
         urlFactory: ArchResourceUrlFactory,
         configMap: ArchResourceServiceConfigMap,
@@ -33,14 +33,15 @@ export abstract class ArchResourceAbstract<RequestParams extends Record<string, 
     ) {
         this.http = http;
         this.urlFactory = urlFactory;
-        this.config = this.getConfig(configMap);
+        this.configMap = configMap;
         this.logger = logger;
     }
 
     request(params: RequestParams): Observable<ResponseData> {
-        const url = this.urlFactory.create(this.config, this.endpoint, params);
+        const config = this.getConfig(this.configMap);
+        const url = this.urlFactory.create(config, this.endpoint, params);
         const baseRequest = new HttpRequest<void>(this.method, url, undefined, {withCredentials: true});
-        const request = this.prepare<void>(baseRequest, params);
+        const request = this.prepare(baseRequest, params) as HttpRequest<void>;
 
         this.logger.info(request, params);
 
@@ -51,8 +52,8 @@ export abstract class ArchResourceAbstract<RequestParams extends Record<string, 
         );
     }
 
-    protected prepare<T>(request: HttpRequest<void>, _params: RequestParams): HttpRequest<T> {
-        return request as HttpRequest<T>;
+    protected prepare(request: HttpRequest<void>, _params: RequestParams): HttpRequest<unknown> {
+        return request;
     }
 
     protected processing(response: HttpResponse<unknown>, params: RequestParams): ResponseData {

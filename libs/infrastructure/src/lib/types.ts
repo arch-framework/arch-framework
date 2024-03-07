@@ -6,21 +6,35 @@ export enum ArchResourceMethod {
     Delete = 'DELETE',
 }
 export type ArchResourceServiceConfig = {
-    /** {@link https://developer.mozilla.org/en-US/docs/Web/API/URL/protocol Протокол} **/
     protocol: 'http' | 'https';
-    /** {@link https://developer.mozilla.org/en-US/docs/Web/API/URL/hostname Хост} **/
     host: string;
-    /** {@link https://developer.mozilla.org/en-US/docs/Web/API/URL/port порт} **/
     port: number;
-    /**
-     * Часть {@link https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname pathname} сразу после порта,
-     * используется для указания адреса ресурса на балансере. Например, `api/v1` или `api/auth`.
-     *
-     * @remarks
-     *
-     * Значение может быть переопределено в {@link Resource.prefix}.
-     **/
     prefix: string;
 };
 
 export type ArchResourceServiceConfigMap = Map<string, ArchResourceServiceConfig>;
+
+export type JsonRpcRequest<T> = {
+    jsonrpc: '2.0';
+    method: string;
+    params?: T;
+    id: string;
+};
+
+export type JsonRpcResponse<T> = {
+    jsonrpc: '2.0';
+    result: T;
+    id: string;
+};
+
+export type JsonRpcError<T> = {
+    jsonrpc: '2.0';
+    error: {
+        code: number;
+        message: string;
+        data?: T;
+    };
+    id: string;
+};
+
+export type JsonRpcData<T> = JsonRpcRequest<T> | JsonRpcResponse<T> | JsonRpcError<T>;

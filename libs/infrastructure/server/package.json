@@ -1,0 +1,11 @@
+{
+    "name": "@arch-framework/infrastructure/server",
+    "version": "0.0.1",
+    "sideEffects": false,
+    "dependencies": {},
+    "peerDependencies": {
+        "@angular/common": "^17.0.0",
+        "@angular/core": "^17.0.0",
+        "rxjs": "^7.8.0"
+    }
+}

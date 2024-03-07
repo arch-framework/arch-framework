@@ -1,6 +1,6 @@
 import {ArchLoggerToken} from '../../tokens/logger';
 
-export class NoopArchLogger extends ArchLoggerToken {
+export class ArchLoggerNoop extends ArchLoggerToken {
     info(): void {
         return undefined;
     }

@@ -1,6 +1,6 @@
 {
     "name": "@ng-arch/common",
-    "version": "0.1.0",
+    "version": "0.1.0-alpha.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/arch-framework/arch-framework.git"
@@ -10,7 +10,5 @@
         "name": "Artyom Kayun",
         "email": "kayun.artem@gmail.com"
     },
-    "sideEffects": false,
-    "dependencies": {},
-    "peerDependencies": {}
+    "sideEffects": false
 }

@@ -19,7 +19,8 @@
         "lint": "nx run-many -t lint --parallel --maxParallel 3",
         "lint:fix": "npm run lint -- --fix",
         "format": "nx format:write",
-        "publish:libs": "lerna publish --no-private --force-publish"
+        "publish:libs": "npm run build:libs && lerna publish --no-private --force-publish",
+        "build:libs": "nx run-many --target build --projects=tag:lib --prod"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,html,md,less,scss,json,yml}": [

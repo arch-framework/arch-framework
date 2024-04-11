@@ -1,6 +1,16 @@
 {
     "name": "@ng-arch/infrastructure",
     "version": "0.0.1",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/arch-framework/arch-framework.git"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Artyom Kayun",
+        "email": "kayun.artem@gmail.com"
+    },
     "sideEffects": false,
     "dependencies": {
         "uuid": "^9.0.1"

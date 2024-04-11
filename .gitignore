@@ -40,3 +40,4 @@ Thumbs.db
 
 .nx
 .angular
+/lerna-debug.log

@@ -1,7 +1,15 @@
 {
     "name": "@ng-arch/source",
     "version": "0.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/arch-framework/arch-framework.git"
+    },
     "license": "MIT",
+    "author": {
+        "name": "Artyom Kayun",
+        "email": "kayun.artem@gmail.com"
+    },
     "scripts": {
         "nx": "nx",
         "dependency:reset": "rm -rf node_modules package-lock.json && npm i",
@@ -10,7 +18,8 @@
         "example:server:start": "nx serve example --configuration development",
         "lint": "nx run-many -t lint --parallel --maxParallel 3",
         "lint:fix": "npm run lint -- --fix",
-        "format": "nx format:write"
+        "format": "nx format:write",
+        "publish:libs": "lerna publish --no-private --force-publish"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,html,md,less,scss,json,yml}": [
@@ -82,6 +91,7 @@
         "jest-environment-jsdom": "29.7.0",
         "jest-preset-angular": "13.1.4",
         "jsonc-eslint-parser": "2.4.0",
+        "lerna": "8.1.2",
         "ng-mocks": "14.12.1",
         "ng-packagr": "17.0.3",
         "nx": "17.2.7",

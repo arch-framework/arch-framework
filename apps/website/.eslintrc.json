@@ -1,0 +1,17 @@
+{
+    "extends": ["../../.eslintrc.json"],
+    "ignorePatterns": ["!**/*", ".docusaurus"],
+    "overrides": [
+        {
+            "files": ["*.tsx"],
+            "extends": ["plugin:@nx/react-base", "plugin:@nx/react-jsx", "plugin:@nx/react-typescript"]
+        },
+        {
+            "files": ["*.json"],
+            "parser": "jsonc-eslint-parser",
+            "rules": {
+                "@nx/dependency-checks": "off"
+            }
+        }
+    ]
+}

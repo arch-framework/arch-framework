@@ -40,4 +40,6 @@ Thumbs.db
 
 .nx
 .angular
+.docusaurus
+.cache-loader
 /lerna-debug.log

@@ -14,12 +14,13 @@
         "nx": "nx",
         "dependency:reset": "rm -rf node_modules package-lock.json && npm i",
         "postinstall": "husky install",
+        "postversion": "npm run build:libs",
         "example:server:ssr": "nx serve-ssr example --configuration development",
         "example:server:start": "nx serve example --configuration development",
         "lint": "nx run-many -t lint --parallel --maxParallel 3",
         "lint:fix": "npm run lint -- --fix",
         "format": "nx format:write",
-        "publish:libs": "npm run build:libs && lerna publish --no-private --force-publish",
+        "publish:libs": "lerna publish --no-private --force-publish",
         "build:libs": "nx run-many --target build --projects=tag:lib --prod"
     },
     "lint-staged": {

@@ -19,7 +19,8 @@
             "@arch-framework/infrastructure": ["libs/infrastructure/src/index.ts"],
             "@arch-framework/infrastructure/client": ["libs/infrastructure/client/src/index.ts"],
             "@arch-framework/infrastructure/server": ["libs/infrastructure/server/src/index.ts"],
-            "@arch-framework/infrastructure/testing": ["libs/infrastructure/src/lib/testing/index.ts"]
+            "@arch-framework/infrastructure/testing": ["libs/infrastructure/src/lib/testing/index.ts"],
+            "@arch-framework/message-broker": ["libs/message-broker/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

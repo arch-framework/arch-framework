@@ -1,12 +1,14 @@
 {
-    "name": "@arch-framework/message-broker",
-    "version": "0.0.1",
+    "name": "@ng-arch/message-broker",
+    "version": "0.1.0",
     "sideEffects": false,
     "dependencies": {
-        "@angular/core": "17.0.8",
-        "@arch-framework/common": "*",
-        "reflect-metadata": "0.1.14",
-        "rxjs": "7.8.1"
+        "tslib": "^2.6.2"
     },
-    "peerDependencies": {}
+    "peerDependencies": {
+        "@angular/core": "^17.0.8",
+        "@arch-framework/common": "^0.1.0",
+        "reflect-metadata": "^0.1.14",
+        "rxjs": "^7.8.1"
+    }
 }

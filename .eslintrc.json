@@ -1,10 +1,14 @@
 {
     "root": true,
     "ignorePatterns": ["**/*"],
-    "plugins": ["@nx", "unused-imports"],
+    "plugins": ["@nx", "import", "unused-imports", "jest"],
     "overrides": [
         {
             "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "settings": {
+                "import/internal-regex": "@angular/",
+                "import/external-module-folders": ["node_modules"]
+            },
             "rules": {
                 "@nx/enforce-module-boundaries": [
                     "error",
@@ -19,6 +23,7 @@
                         ]
                     }
                 ],
+                "jest/no-focused-tests": "error",
                 "@typescript-eslint/no-unused-vars": "off",
                 "unused-imports/no-unused-imports": "error",
                 "unused-imports/no-unused-vars": [
@@ -28,6 +33,34 @@
                         "varsIgnorePattern": "^_",
                         "args": "after-used",
                         "argsIgnorePattern": "^_"
+                    }
+                ],
+                "no-console": [
+                    "error",
+                    {
+                        "allow": ["warn", "error", "debug"]
+                    }
+                ],
+                "import/order": [
+                    "error",
+                    {
+                        "newlines-between": "always",
+                        "groups": ["internal", "unknown", "external", "builtin", ["parent", "sibling", "index"]],
+                        "pathGroups": [
+                            {
+                                "pattern": "rxjs",
+                                "group": "unknown"
+                            },
+                            {
+                                "pattern": "rxjs/**",
+                                "group": "unknown"
+                            },
+                            {
+                                "pattern": "@arch-framework/**",
+                                "group": "builtin"
+                            }
+                        ],
+                        "pathGroupsExcludedImportTypes": ["type", "object"]
                     }
                 ]
             }
@@ -52,9 +85,7 @@
         {
             "files": ["*.json"],
             "parser": "jsonc-eslint-parser",
-            "rules": {
-                "@nx/dependency-checks": "error"
-            }
+            "rules": {}
         }
     ]
 }

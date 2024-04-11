@@ -1,10 +1,10 @@
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpContext} from '@angular/common/http';
+
 import {faker} from '@faker-js/faker';
 import {MockBuilder, ngMocks} from 'ng-mocks';
 
 import {JsonRpcRequestFactory, JsonRpcResponseFactory} from '../../../../src/lib/testing';
-
 import {ArchResourceBatchInterceptor} from './resource-batch.interceptor';
 import {REQUEST_BATCH_MAP} from '../tokens/request-batch-map';
 import {REQUEST_BATCH_METADATA} from '../tokens/request-batch-metadata';

@@ -2,7 +2,7 @@
     "name": "common",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/common/src",
-    "prefix": "arch-framework",
+    "prefix": "ng-arch",
     "tags": [],
     "projectType": "library",
     "targets": {

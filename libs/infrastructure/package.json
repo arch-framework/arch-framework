@@ -1,12 +1,14 @@
 {
-    "name": "@arch-framework/infrastructure",
+    "name": "@ng-arch/infrastructure",
     "version": "0.0.1",
     "sideEffects": false,
-    "dependencies": {},
+    "dependencies": {
+        "uuid": "^9.0.1"
+    },
     "peerDependencies": {
         "@angular/common": "^17.0.0",
         "@angular/core": "^17.0.0",
-        "@arch-framework/common": "^0.1.0",
-        "rxjs": "^7.8.0"
+        "@ng-arch/common": "^0.1.0",
+        "rxjs": "^7.8.1"
     }
 }

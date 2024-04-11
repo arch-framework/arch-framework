@@ -56,7 +56,7 @@
                                 "group": "unknown"
                             },
                             {
-                                "pattern": "@arch-framework/**",
+                                "pattern": "@ng-arch/**",
                                 "group": "builtin"
                             }
                         ],
@@ -85,7 +85,18 @@
         {
             "files": ["*.json"],
             "parser": "jsonc-eslint-parser",
-            "rules": {}
+            "rules": {
+                "@nx/dependency-checks": [
+                    "error",
+                    {
+                        "buildTargets": ["build"],
+                        "checkMissingDependencies": true,
+                        "checkObsoleteDependencies": true,
+                        "checkVersionMismatches": false,
+                        "ignoredDependencies": ["tslib", "@faker-js/faker", "factory.ts"]
+                    }
+                ]
+            }
         }
     ]
 }

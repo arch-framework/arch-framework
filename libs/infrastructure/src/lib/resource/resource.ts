@@ -2,7 +2,7 @@ import {HttpClient, HttpErrorResponse, HttpEvent, HttpRequest, HttpResponse} fro
 
 import {catchError, filter, map, Observable, throwError} from 'rxjs';
 
-import {ArchLogger} from '@arch-framework/common';
+import {ArchLogger} from '@ng-arch/common';
 
 import {ArchResource} from '../interfaces/resource';
 import {ArchResourceUrlFactory} from '../interfaces/resource-url-factory';

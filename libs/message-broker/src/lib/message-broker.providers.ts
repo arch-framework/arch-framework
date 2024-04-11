@@ -7,7 +7,7 @@ import {
     Type,
 } from '@angular/core';
 
-import {ArchIdGenerator, ArchIdGeneratorRandomTimestamp, ArchIdGeneratorToken} from '@arch-framework/common';
+import {ArchIdGenerator, ArchIdGeneratorRandomTimestamp, ArchIdGeneratorToken} from '@ng-arch/common';
 
 import {ArchMessageBrokerToken} from './tokens/message-broker';
 import {ArchMessageBrokerTransportToken} from './tokens/message-broker-transport';

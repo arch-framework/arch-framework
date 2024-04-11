@@ -1,8 +1,8 @@
 import {ModuleWithProviders, NgModule, Type} from '@angular/core';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
-import {ArchResource, ArchResourceServiceConfig} from '@arch-framework/infrastructure';
-import {ArchLoggerToken, ArchLoggerNoop} from '@arch-framework/common';
+import {ArchResource, ArchResourceServiceConfig} from '@ng-arch/infrastructure';
+import {ArchLoggerToken, ArchLoggerNoop} from '@ng-arch/common';
 
 import {ArchResourceClient} from './resource-client.imp';
 import {ArchResourceUrlFactoryToken} from '../../../src/lib/tokens/resource-url-factory';

@@ -1,6 +1,6 @@
 {
-    "name": "@arch-framework/common",
-    "version": "0.0.1",
+    "name": "@ng-arch/common",
+    "version": "0.1.0",
     "sideEffects": false,
     "dependencies": {},
     "peerDependencies": {}

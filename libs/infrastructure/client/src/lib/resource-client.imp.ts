@@ -3,14 +3,14 @@ import {HttpClient, HttpContext, HttpRequest} from '@angular/common/http';
 
 import {v4 as uuid} from 'uuid';
 
+import {ArchLogger, ArchLoggerToken} from '@ng-arch/common';
 import {
     ArchResourceAbstract,
     ArchResourceMethod,
     ArchResourceServiceConfigMap,
     ArchResourceUrlFactory,
     JsonRpcRequest,
-} from '@arch-framework/infrastructure';
-import {ArchLogger, ArchLoggerToken} from '@arch-framework/common';
+} from '@ng-arch/infrastructure';
 
 import {ArchResourceUrlFactoryToken} from '../../../src/lib/tokens/resource-url-factory';
 import {ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN} from '../../../src/lib/tokens/resource-service-config-map';

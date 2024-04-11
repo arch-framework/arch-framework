@@ -2,7 +2,7 @@
     "name": "infrastructure",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/infrastructure/src",
-    "prefix": "arch-framework",
+    "prefix": "ng-arch",
     "tags": [],
     "projectType": "library",
     "targets": {

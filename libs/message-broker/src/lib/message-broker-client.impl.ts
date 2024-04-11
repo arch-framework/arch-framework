@@ -1,6 +1,6 @@
 import {filter, map, Observable} from 'rxjs';
 
-import {ArchIdGenerator} from '@arch-framework/common';
+import {ArchIdGenerator} from '@ng-arch/common';
 
 import {ArchMessageBrokerClient} from './interfaces/message-broker-client';
 import {ArchMessageBroker} from './interfaces/message-broker';

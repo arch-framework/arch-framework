@@ -3,7 +3,7 @@
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/message-broker/src",
     "prefix": "ng-arch",
-    "tags": [],
+    "tags": ["lib"],
     "projectType": "library",
     "targets": {
         "build": {

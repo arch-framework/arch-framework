@@ -1,5 +1,5 @@
 {
-    "name": "@arch-framework/infrastructure/server",
+    "name": "@ng-arch/infrastructure/server",
     "version": "0.0.1",
     "sideEffects": false,
     "dependencies": {},

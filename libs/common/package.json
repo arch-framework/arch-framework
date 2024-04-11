@@ -1,7 +1,14 @@
 {
-    "name": "@arch-framework/common",
-    "version": "0.0.1",
-    "sideEffects": false,
-    "dependencies": {},
-    "peerDependencies": {}
+    "name": "@ng-arch/common",
+    "version": "0.1.0-alpha.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/arch-framework/arch-framework.git"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Artyom Kayun",
+        "email": "kayun.artem@gmail.com"
+    },
+    "sideEffects": false
 }

@@ -3,7 +3,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 
 import {finalize, Observable} from 'rxjs';
 
-import {JsonRpcRequest} from '@arch-framework/infrastructure';
+import {JsonRpcRequest} from '@ng-arch/infrastructure';
 
 import {RequestJsonRpcBatch} from '../classes/request-json-rpc-batch';
 import {REQUEST_BATCH_METADATA} from '../tokens/request-batch-metadata';

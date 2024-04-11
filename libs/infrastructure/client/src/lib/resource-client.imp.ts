@@ -1,16 +1,19 @@
+import {Inject, Injectable} from '@angular/core';
+import {HttpClient, HttpContext, HttpRequest} from '@angular/common/http';
+
+import {v4 as uuid} from 'uuid';
+
+import {ArchLogger, ArchLoggerToken} from '@ng-arch/common';
 import {
     ArchResourceAbstract,
     ArchResourceMethod,
     ArchResourceServiceConfigMap,
     ArchResourceUrlFactory,
     JsonRpcRequest,
-} from '@arch-framework/infrastructure';
-import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpContext, HttpRequest} from '@angular/common/http';
+} from '@ng-arch/infrastructure';
+
 import {ArchResourceUrlFactoryToken} from '../../../src/lib/tokens/resource-url-factory';
 import {ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN} from '../../../src/lib/tokens/resource-service-config-map';
-import {ArchLogger, ArchLoggerToken} from '@arch-framework/common';
-import {v4 as uuid} from 'uuid';
 import {REQUEST_BATCH_METADATA} from './tokens/request-batch-metadata';
 
 export type ArchResourceClientParams = {

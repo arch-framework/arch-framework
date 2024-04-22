@@ -1,17 +1,17 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 
-import {map, switchMap, tap} from 'rxjs';
+import {first, map, switchMap, tap} from 'rxjs';
 
-import {ArchMessageBrokerCommandHandler, ArchMessageBrokerEventHandler} from './interfaces/message-broker-handler';
+import {ArchMessageBrokerHandlerCommand, ArchMessageBrokerHandlerEvent} from './interfaces/message-broker-handler';
 import {ArchMessageBrokerEvent} from './interfaces/message-broker-event';
-import {ArchMessageBrokerToken} from './tokens/message-broker';
 import {ArchMessageBrokerChannel} from './interfaces/message-broker-channel';
-import {ArchMessageBrokerChannelImpl} from './message-broker-channel.impl';
-import {ArchMessageBrokerTransportToken} from './tokens/message-broker-transport';
 import {ArchMessageBrokerTransport} from './interfaces/message-broker-transport';
-import {ArchMessageBrokerHandler, ArchMessageBrokerHandlerKind, ArchMessageBrokerHandlerParams} from './types';
-import {ARCH_HANDLER_KIND, ARCH_HANDLER_METADATA} from './constants';
+import {ArchMessageBrokerToken} from './tokens/message-broker';
+import {ArchMessageBrokerTransportToken} from './tokens/message-broker-transport';
+import {ArchMessageBrokerChannelImpl} from './message-broker-channel.impl';
 import {ArchMessageBrokerEventImpl} from './message-broker-event.impl';
+import {ArchMessageBrokerHandler, ArchMessageBrokerHandlerKind, ArchMessageBrokerHandlerParams} from './types';
+import {ARCH_HANDLER_CHANNEL, ARCH_HANDLER_KIND, ARCH_HANDLER_METADATA} from './constants';
 
 @Injectable()
 export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
@@ -19,9 +19,7 @@ export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
 
     private readonly handlers = new Set<object | null>();
 
-    constructor(@Inject(ArchMessageBrokerTransportToken) private readonly transport: ArchMessageBrokerTransport) {
-        super();
-    }
+    private readonly transport = inject<ArchMessageBrokerTransport>(ArchMessageBrokerTransportToken);
 
     getChannel(name: string): ArchMessageBrokerChannel {
         return this.#getChannel(name);
@@ -41,11 +39,11 @@ export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
 
         switch (kind) {
             case ArchMessageBrokerHandlerKind.Event: {
-                this.#registerEventHandler(handler as ArchMessageBrokerEventHandler<unknown>);
+                this.#registerEventHandler(handler as ArchMessageBrokerHandlerEvent<unknown>);
                 break;
             }
             case ArchMessageBrokerHandlerKind.Command: {
-                this.#registerCommandHandler(handler as ArchMessageBrokerCommandHandler<unknown, unknown>);
+                this.#registerCommandHandler(handler as ArchMessageBrokerHandlerCommand<unknown, unknown>);
                 break;
             }
         }
@@ -65,34 +63,37 @@ export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
         }
     }
 
-    #registerEventHandler(handler: ArchMessageBrokerEventHandler<unknown>): void {
-        const {channel, pattern}: ArchMessageBrokerHandlerParams = Reflect.getMetadata(ARCH_HANDLER_METADATA, handler);
-        const to = this.getChannel(channel);
+    #registerEventHandler(handler: ArchMessageBrokerHandlerEvent<unknown>): void {
+        const channel: string = Reflect.getMetadata(ARCH_HANDLER_CHANNEL, handler);
+        const {pattern}: ArchMessageBrokerHandlerParams = Reflect.getMetadata(ARCH_HANDLER_METADATA, handler);
+        const from = this.getChannel(channel);
 
-        to.on(pattern)
-            .pipe(tap(event => handler.handle(event)))
+        from.on(pattern)
+            .pipe(switchMap(event => handler.handle(event).pipe(first())))
             .subscribe();
     }
 
-    #registerCommandHandler(handler: ArchMessageBrokerCommandHandler<unknown, unknown>): void {
-        const {channel, pattern}: ArchMessageBrokerHandlerParams = Reflect.getMetadata(ARCH_HANDLER_METADATA, handler);
-        const to = this.getChannel(channel);
-        const from = this.getReplayChannel(channel);
+    #registerCommandHandler(handler: ArchMessageBrokerHandlerCommand<unknown, unknown>): void {
+        const channel: string = Reflect.getMetadata(ARCH_HANDLER_CHANNEL, handler);
+        const {pattern}: ArchMessageBrokerHandlerParams = Reflect.getMetadata(ARCH_HANDLER_METADATA, handler);
+        const from = this.getChannel(channel);
+        const to = this.getReplayChannel(channel);
 
-        to.on(pattern)
+        from.on(pattern)
             .pipe(
                 switchMap(event =>
-                    handler
-                        .handle(event)
-                        .pipe(map(result => [event, result] as [ArchMessageBrokerEvent<unknown>, unknown])),
+                    handler.handle(event).pipe(
+                        first(),
+                        map(result => [event, result] as [ArchMessageBrokerEvent<unknown>, unknown]),
+                    ),
                 ),
                 map(([event, result]) => {
                     const {id} = event.getMetadata();
-                    const channel = from.getChannelName();
+                    const channel = to.getChannelName();
 
                     return new ArchMessageBrokerEventImpl(result, {id, pattern, channel});
                 }),
-                tap(event => from.emit(event)),
+                tap(event => to.emit(event)),
             )
             .subscribe();
     }

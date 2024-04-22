@@ -2,10 +2,10 @@ import {Observable} from 'rxjs';
 
 import {ArchMessageBrokerEvent} from './message-broker-event';
 
-export interface ArchMessageBrokerEventHandler<Payload> {
-    handle(event: ArchMessageBrokerEvent<Payload>): void;
+export interface ArchMessageBrokerHandlerEvent<Payload> {
+    handle(event: ArchMessageBrokerEvent<Payload>): Observable<void>;
 }
 
-export interface ArchMessageBrokerCommandHandler<Payload, Result> {
+export interface ArchMessageBrokerHandlerCommand<Result, Payload = void> {
     handle(event: ArchMessageBrokerEvent<Payload>): Observable<Result>;
 }

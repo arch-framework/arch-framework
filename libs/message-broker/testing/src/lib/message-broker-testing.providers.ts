@@ -10,7 +10,7 @@ import {
 import {ArchMessageBrokerTransportStub} from './message-broker-transport.stub';
 import {ArchMessageBrokerHandlerRegisterStub} from './message-broker-handler-register.stub';
 
-export function provideMessageBrokerTesting(): EnvironmentProviders {
+export function provideArchMessageBrokerTesting(): EnvironmentProviders {
     return makeEnvironmentProviders([
         {
             provide: ArchMessageBrokerTransportToken,

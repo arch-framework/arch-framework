@@ -11,7 +11,7 @@
         "email": "kayun.artem@gmail.com"
     },
     "sideEffects": false,
-    "dependencies": {
+    "peerDependencies": {
         "@angular/core": "17.0.8"
     }
 }

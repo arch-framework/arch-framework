@@ -14,7 +14,7 @@
         "nx": "nx",
         "dependency:reset": "rm -rf node_modules package-lock.json && npm i",
         "postinstall": "husky install",
-        "postversion": "npm run build:libs",
+        "postversion": "npm run build:libs:prod",
         "website:server:start": "nx start website",
         "website:build": "nx build website",
         "example:server:ssr": "nx serve-ssr example --configuration development",
@@ -23,7 +23,7 @@
         "lint:fix": "npm run lint -- --fix",
         "format": "nx format:write",
         "publish:libs": "lerna publish --no-private --force-publish",
-        "build:libs": "nx run-many --target build --projects=tag:lib --prod"
+        "build:libs:prod": "nx run-many --target build --projects=tag:lib --prod --skip-nx-cache"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,html,md,less,scss,json,yml}": [

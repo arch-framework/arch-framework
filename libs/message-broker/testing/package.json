@@ -1,6 +1,5 @@
 {
-    "name": "@ng-arch/common",
-    "version": "0.1.0-alpha.5",
+    "name": "@ng-arch/message-broker/testing",
     "repository": {
         "type": "git",
         "url": "https://github.com/arch-framework/arch-framework.git"
@@ -12,6 +11,11 @@
     },
     "sideEffects": false,
     "dependencies": {
-        "@angular/core": "17.0.8"
+        "tslib": "^2.6.2"
+    },
+    "peerDependencies": {
+        "@angular/core": "^17.0.8",
+        "@ng-arch/common": "^0.1.0",
+        "rxjs": "^7.8.1"
     }
 }

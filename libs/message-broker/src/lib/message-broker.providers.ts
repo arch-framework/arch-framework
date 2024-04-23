@@ -8,7 +8,7 @@ import {
     Type,
 } from '@angular/core';
 
-import {ArchIdGenerator, ArchIdGeneratorRandomTimestamp, ArchIdGeneratorToken} from '@ng-arch/common';
+import {ArchIdGenerator, ArchIdGeneratorToken} from '@ng-arch/common';
 
 import {ArchMessageBrokerToken} from './tokens/message-broker';
 import {ArchMessageBrokerTransportToken} from './tokens/message-broker-transport';
@@ -28,12 +28,8 @@ import {
 } from './types';
 import {ARCH_HANDLER_CHANNEL} from './constants';
 
-export function provideMessageBroker(): EnvironmentProviders {
+export function provideArchMessageBroker(): EnvironmentProviders {
     return makeEnvironmentProviders([
-        {
-            provide: ArchIdGeneratorToken,
-            useClass: ArchIdGeneratorRandomTimestamp,
-        },
         {
             provide: ArchMessageBrokerTransportToken,
             useClass: ArchMessageBrokerTransportImpl,
@@ -46,7 +42,7 @@ export function provideMessageBroker(): EnvironmentProviders {
     ]);
 }
 
-export function provideMessageBrokerHandlers(
+export function provideArchMessageBrokerHandlers(
     channel: string,
     ...features: ArchMessageBrokerHandlerFeatures[]
 ): EnvironmentProviders {
@@ -67,7 +63,7 @@ export function provideMessageBrokerHandlers(
     ]);
 }
 
-export function provideMessageBrokerClients(...features: ArchMessageBrokerClientFeature[]): Provider[] {
+export function provideArchMessageBrokerClients(...features: ArchMessageBrokerClientFeature[]): Provider[] {
     return features.flatMap(({providers}) => providers);
 }
 

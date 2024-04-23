@@ -11,7 +11,10 @@
         "email": "kayun.artem@gmail.com"
     },
     "sideEffects": false,
+    "dependencies": {
+        "tslib": "^2.6.2"
+    },
     "peerDependencies": {
-        "@angular/core": "17.0.8"
+        "@angular/core": "^17.0.8"
     }
 }

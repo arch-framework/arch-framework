@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.8](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.7...v0.1.0-alpha.8) (2024-04-23)
+
+### Bug Fixes
+
+- **message-broker:** rename provideMessageBrokerTesting to provideArchMessageBrokerTesting
+  ([5b4d351](https://github.com/arch-framework/arch-framework/commit/5b4d351b89f9d1d809867a39446abad2d045139a))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.7](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.6...v0.1.0-alpha.7) (2024-04-23)
 
 **Note:** Version bump only for package @ng-arch/message-broker

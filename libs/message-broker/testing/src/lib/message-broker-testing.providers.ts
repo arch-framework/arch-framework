@@ -1,5 +1,6 @@
 import {EnvironmentProviders, makeEnvironmentProviders} from '@angular/core';
 
+import {ArchIdGeneratorRandomTimestamp, ArchIdGeneratorToken} from '@ng-arch/common';
 import {
     ArchMessageBrokerTransportToken,
     ArchMessageBrokerHandlerRegisterService,
@@ -12,6 +13,10 @@ import {ArchMessageBrokerHandlerRegisterStub} from './message-broker-handler-reg
 
 export function provideArchMessageBrokerTesting(): EnvironmentProviders {
     return makeEnvironmentProviders([
+        {
+            provide: ArchIdGeneratorToken,
+            useClass: ArchIdGeneratorRandomTimestamp,
+        },
         {
             provide: ArchMessageBrokerTransportToken,
             useClass: ArchMessageBrokerTransportStub,

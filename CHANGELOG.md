@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.13](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.12...v0.1.0-alpha.13) (2024-04-27)
+
+### Bug Fixes
+
+- **message-broker:** no elements in sequence
+  ([fac371d](https://github.com/arch-framework/arch-framework/commit/fac371d2470a5a131d81d5653e976dbc22d77f38))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.12](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.11...v0.1.0-alpha.12) (2024-04-24)
 
 **Note:** Version bump only for package @ng-arch/source

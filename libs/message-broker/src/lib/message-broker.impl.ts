@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 
-import {first, map, switchMap, tap} from 'rxjs';
+import {map, switchMap, take, tap} from 'rxjs';
 
 import {ArchMessageBrokerHandlerCommand, ArchMessageBrokerHandlerEvent} from './interfaces/message-broker-handler';
 import {ArchMessageBrokerEvent} from './interfaces/message-broker-event';
@@ -69,7 +69,7 @@ export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
         const from = this.getChannel(channel);
 
         from.on(pattern)
-            .pipe(switchMap(event => handler.handle(event).pipe(first())))
+            .pipe(switchMap(event => handler.handle(event).pipe(take(1))))
             .subscribe();
     }
 
@@ -83,7 +83,7 @@ export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
             .pipe(
                 switchMap(event =>
                     handler.handle(event).pipe(
-                        first(),
+                        take(1),
                         map(result => [event, result] as [ArchMessageBrokerEvent<unknown>, unknown]),
                     ),
                 ),

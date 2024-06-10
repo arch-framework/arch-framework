@@ -50,6 +50,7 @@ const config: Config = {
     ],
 
     themeConfig: {
+        metadata: [{name: 'robots', content: 'noindex'}],
         // Replace with your project's social card
         image: 'img/docusaurus-social-card.jpg',
         navbar: {

@@ -3,20 +3,15 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-    title: 'My Site',
+    title: 'Arch Framework',
     tagline: 'Dinosaurs are cool',
     favicon: 'img/favicon.ico',
 
-    // Set the production url of your site here
-    url: 'https://your-docusaurus-site.example.com',
-    // Set the /<baseUrl>/ pathname under which your site is served
-    // For GitHub pages deployment, it is often '/<projectName>/'
+    url: 'https://archjs.io',
     baseUrl: '/',
-
-    // GitHub pages deployment config.
-    // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'facebook', // Usually your GitHub org/user name.
-    projectName: 'docusaurus', // Usually your repo name.
+    organizationName: 'arch-framework',
+    projectName: 'arch-framework',
+    trailingSlash: false,
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',

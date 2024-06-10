@@ -17,6 +17,7 @@
         "postversion": "npm run build:libs:prod",
         "website:server:start": "nx start website",
         "website:build": "nx build website",
+        "website:deploy": "nx deploy website",
         "example:server:ssr": "nx serve-ssr example --configuration development",
         "example:server:start": "nx serve example --configuration development",
         "lint": "nx run-many -t lint --parallel --maxParallel 3",

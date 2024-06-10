@@ -43,3 +43,4 @@ Thumbs.db
 .docusaurus
 .cache-loader
 /lerna-debug.log
+apps/website/build

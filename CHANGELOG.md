@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.14](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.13...v0.1.0-alpha.14) (2024-06-10)
+
+### Bug Fixes
+
+- **message-broker:** change handle signature
+  ([ab0dd95](https://github.com/arch-framework/arch-framework/commit/ab0dd95dbde746fdd6830a45426a7ba0694b3ac2))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.13](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.12...v0.1.0-alpha.13) (2024-04-27)
 
 ### Bug Fixes

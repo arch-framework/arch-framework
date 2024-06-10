@@ -1,6 +1,6 @@
 {
     "name": "@ng-arch/message-broker",
-    "version": "0.1.0-alpha.13",
+    "version": "0.1.0-alpha.14",
     "repository": {
         "type": "git",
         "url": "https://github.com/arch-framework/arch-framework.git"

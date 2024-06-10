@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 
-import {map, switchMap, take, tap} from 'rxjs';
+import {isObservable, map, of, switchMap, take, tap} from 'rxjs';
 
 import {ArchMessageBrokerHandlerCommand, ArchMessageBrokerHandlerEvent} from './interfaces/message-broker-handler';
 import {ArchMessageBrokerEvent} from './interfaces/message-broker-event';
@@ -69,7 +69,10 @@ export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
         const from = this.getChannel(channel);
 
         from.on(pattern)
-            .pipe(switchMap(event => handler.handle(event).pipe(take(1))))
+            .pipe(
+                map(event => handler.handle(event)),
+                switchMap(result => (isObservable(result) ? result.pipe(take(1)) : of(undefined))),
+            )
             .subscribe();
     }
 
@@ -82,10 +85,9 @@ export class ArchMessageBrokerImpl extends ArchMessageBrokerToken {
         from.on(pattern)
             .pipe(
                 switchMap(event =>
-                    handler.handle(event).pipe(
-                        take(1),
-                        map(result => [event, result] as [ArchMessageBrokerEvent<unknown>, unknown]),
-                    ),
+                    handler
+                        .handle(event)
+                        .pipe(map(result => [event, result] as [ArchMessageBrokerEvent<unknown>, unknown])),
                 ),
                 map(([event, result]) => {
                     const {id} = event.getMetadata();

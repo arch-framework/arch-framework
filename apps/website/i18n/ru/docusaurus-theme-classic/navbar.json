@@ -1,0 +1,10 @@
+{
+    "title": {
+        "message": "Arch Framework",
+        "description": "The title in the navbar"
+    },
+    "item.label.Documentations": {
+        "message": "Документация",
+        "description": "Navbar item with label Documentations"
+    }
+}

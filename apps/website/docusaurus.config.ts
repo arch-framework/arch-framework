@@ -4,7 +4,6 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
     title: 'Arch Framework',
-    tagline: 'Dinosaurs are cool',
     favicon: 'img/favicon.ico',
 
     url: 'https://archjs.io',
@@ -21,7 +20,7 @@ const config: Config = {
     // may want to replace "en" with "zh-Hans".
     i18n: {
         defaultLocale: 'en',
-        locales: ['en'],
+        locales: ['en', 'ru'],
     },
 
     presets: [
@@ -30,17 +29,9 @@ const config: Config = {
             {
                 docs: {
                     sidebarPath: './sidebars.ts',
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 blog: {
                     showReadingTime: true,
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 theme: {
                     customCss: './src/css/custom.css',
@@ -51,12 +42,14 @@ const config: Config = {
 
     themeConfig: {
         metadata: [{name: 'robots', content: 'noindex'}],
-        // Replace with your project's social card
-        image: 'img/docusaurus-social-card.jpg',
+        colorMode: {
+            defaultMode: 'light',
+            disableSwitch: true,
+        },
         navbar: {
-            title: 'My Site',
+            title: 'Arch Framework',
             logo: {
-                alt: 'My Site Logo',
+                alt: 'Arch Framework Logo',
                 src: 'img/logo.svg',
             },
             items: [
@@ -64,60 +57,13 @@ const config: Config = {
                     type: 'docSidebar',
                     sidebarId: 'tutorialSidebar',
                     position: 'left',
-                    label: 'Tutorial',
-                },
-                {to: '/blog', label: 'Blog', position: 'left'},
-                {
-                    href: 'https://github.com/facebook/docusaurus',
-                    label: 'GitHub',
-                    position: 'right',
+                    label: 'Documentations',
                 },
             ],
         },
         footer: {
-            style: 'dark',
-            links: [
-                {
-                    title: 'Docs',
-                    items: [
-                        {
-                            label: 'Tutorial',
-                            to: '/docs/intro',
-                        },
-                    ],
-                },
-                {
-                    title: 'Community',
-                    items: [
-                        {
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                        },
-                        {
-                            label: 'Discord',
-                            href: 'https://discordapp.com/invite/docusaurus',
-                        },
-                        {
-                            label: 'Twitter',
-                            href: 'https://twitter.com/docusaurus',
-                        },
-                    ],
-                },
-                {
-                    title: 'More',
-                    items: [
-                        {
-                            label: 'Blog',
-                            to: '/blog',
-                        },
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/facebook/docusaurus',
-                        },
-                    ],
-                },
-            ],
-            copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+            style: 'light',
+            copyright: `Powered by the Artyom Kayun ©${new Date().getFullYear()}. Code licensed under an <a href="/license" title="License text"> MIT License </a>`,
         },
         prism: {
             theme: prismThemes.github,

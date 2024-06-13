@@ -21,7 +21,8 @@
             "@ng-arch/infrastructure/server": ["libs/infrastructure/server/src/index.ts"],
             "@ng-arch/infrastructure/testing": ["libs/infrastructure/src/lib/testing/index.ts"],
             "@ng-arch/message-broker": ["libs/message-broker/src/index.ts"],
-            "@ng-arch/message-broker/testing": ["libs/message-broker/testing/src/index.ts"]
+            "@ng-arch/message-broker/testing": ["libs/message-broker/testing/src/index.ts"],
+            "@ng-arch/schematics": ["libs/schematics/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

@@ -6,7 +6,9 @@ import {get} from 'lodash';
 import * as path from 'node:path';
 
 import {DomainGeneratorSchema} from './schema';
-import {deleteDefaultGeneratedComponent} from '../../utils/delete-default-generated-component';
+import {deleteDefaultGeneratedComponent, addDepsConstraints} from '../../utils';
+import {DOMAIN_TYPE_LIBRARY_TAG, SHARED_DOMAIN_LIBRARY_TAG} from '../../constants';
+import setupLintGenerator from '../setup-lint/generator';
 
 export async function domainGenerator(tree: Tree, options: DomainGeneratorSchema) {
     const nxJsonConfiguration = readJsonFile<NxJsonConfiguration>(`${tree.root}/nx.json`);
@@ -20,12 +22,19 @@ export async function domainGenerator(tree: Tree, options: DomainGeneratorSchema
         projectNameAndRootFormat: 'as-provided',
         flat: true,
         skipModule: true,
-        tags: `domain:${libName},type:domain-logic`,
+        tags: `domain:${libName},${DOMAIN_TYPE_LIBRARY_TAG}`,
         prefix: libName,
         ...globalLibraryOptions,
     });
+    await setupLintGenerator(tree, {});
 
     deleteDefaultGeneratedComponent(tree, projectRoot);
+    addDepsConstraints(tree, [
+        {
+            sourceTag: `domain:${libName}`,
+            onlyDependOnLibsWithTags: [`domain:${libName}`, SHARED_DOMAIN_LIBRARY_TAG],
+        },
+    ]);
 
     generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
         ...options,

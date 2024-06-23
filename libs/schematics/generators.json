@@ -3,7 +3,12 @@
         "domain": {
             "factory": "./src/generators/domain/generator",
             "schema": "./src/generators/domain/schema.json",
-            "description": "domain generator"
+            "description": "New domain generator"
+        },
+        "setup-lint": {
+            "factory": "./src/generators/setup-lint/generator",
+            "schema": "./src/generators/setup-lint/schema.json",
+            "description": "Linting config generator"
         }
     }
 }

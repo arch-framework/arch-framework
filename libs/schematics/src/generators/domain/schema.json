@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/schema",
+    "$id": "Domain",
+    "title": "Domain generator",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Domain name.",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What domain name would you like to use?",
+            "pattern": "(?:^@[a-zA-Z0-9-*~][a-zA-Z0-9-*._~]*\\/[a-zA-Z0-9-~][a-zA-Z0-9-._~]*|^[a-zA-Z][^:]*)$"
+        },
+        "standalone": {
+            "type": "boolean",
+            "description": "Generate a library that uses a standalone component instead of a module as the entry point.",
+            "default": true,
+            "x-priority": "important"
+        },
+        "publishable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Generate a publishable library.",
+            "x-priority": "important"
+        },
+        "buildable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Generate a buildable library.",
+            "x-priority": "important"
+        },
+        "importPath": {
+            "type": "string",
+            "description": "The library name used to import it, like `@myorg/my-awesome-lib`. Must be a valid npm name."
+        },
+        "tags": {
+            "type": "string",
+            "description": "Add tags to the library (used for linting)."
+        }
+    },
+    "required": ["name"]
+}

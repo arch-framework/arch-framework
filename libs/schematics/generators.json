@@ -1,0 +1,9 @@
+{
+    "generators": {
+        "domain": {
+            "factory": "./src/generators/domain/generator",
+            "schema": "./src/generators/domain/schema.json",
+            "description": "domain generator"
+        }
+    }
+}

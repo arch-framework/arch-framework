@@ -1,0 +1,8 @@
+{
+    "$schema": "https://json-schema.org/schema",
+    "$id": "Setup-lint",
+    "title": "Setup @nx/enforce-module-boundaries rules generator",
+    "type": "object",
+    "properties": {},
+    "required": []
+}

@@ -9,6 +9,11 @@
             "factory": "./src/generators/setup-lint/generator",
             "schema": "./src/generators/setup-lint/schema.json",
             "description": "Linting config generator"
+        },
+        "ui": {
+            "factory": "./src/generators/ui/generator",
+            "schema": "./src/generators/ui/schema.json",
+            "description": "ui generator"
         }
     }
 }

@@ -17,7 +17,7 @@ export async function domainGenerator(tree: Tree, options: DomainGeneratorSchema
     const projectRoot = `libs/${libName}/domain`;
 
     await libraryGenerator(tree, {
-        name: `${libName}-domain`,
+        name: `domain-${libName}`,
         directory: projectRoot,
         projectNameAndRootFormat: 'as-provided',
         flat: true,

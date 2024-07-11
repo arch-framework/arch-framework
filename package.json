@@ -24,7 +24,7 @@
         "lint:fix": "npm run lint -- --fix",
         "format": "nx format:write",
         "publish:libs": "lerna publish --no-private",
-        "build:libs:prod": "nx run-many --target build --projects=tag:lib --prod --skip-nx-cache"
+        "build:libs:prod": "nx run-many --target build --projects=tag:scope:public --prod --skip-nx-cache"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,html,md,less,scss,json,yml}": [

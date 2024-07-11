@@ -5,15 +5,16 @@ import {v4 as uuid} from 'uuid';
 
 import {ArchLogger, ArchLoggerToken} from '@ng-arch/common';
 import {
+    ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN,
     ArchResourceAbstract,
     ArchResourceMethod,
     ArchResourceServiceConfigMap,
+    ArchResourceServiceKind,
     ArchResourceUrlFactory,
+    ArchResourceUrlFactoryToken,
     JsonRpcRequest,
 } from '@ng-arch/infrastructure';
 
-import {ArchResourceUrlFactoryToken} from '../../../src/lib/tokens/resource-url-factory';
-import {ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN} from '../../../src/lib/tokens/resource-service-config-map';
 import {REQUEST_BATCH_METADATA} from './tokens/request-batch-metadata';
 
 export type ArchResourceClientParams = {
@@ -26,12 +27,12 @@ export type ArchResourceClientParams = {
 export type ArchResourceClientResult = void;
 
 @Injectable()
-export class ArchResourceClient extends ArchResourceAbstract<ArchResourceClientParams, ArchResourceClientResult> {
-    override service = 'api-gateway';
+export class ArchResourceClientImpl extends ArchResourceAbstract<ArchResourceClientParams, ArchResourceClientResult> {
+    override service = ArchResourceServiceKind.ApiGateway;
 
     override method = ArchResourceMethod.Post;
 
-    override endpoint = 'gateway';
+    override endpoint = '';
 
     constructor(
         http: HttpClient,

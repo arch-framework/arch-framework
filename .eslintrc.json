@@ -17,6 +17,10 @@
                         "allow": [],
                         "depConstraints": [
                             {
+                                "sourceTag": "type:lib",
+                                "onlyDependOnLibsWithTags": ["type:lib"]
+                            },
+                            {
                                 "sourceTag": "type:feature",
                                 "onlyDependOnLibsWithTags": ["type:ui", "type:domain", "type:util"]
                             },

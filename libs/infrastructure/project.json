@@ -3,7 +3,7 @@
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/infrastructure/src",
     "prefix": "ng-arch",
-    "tags": [],
+    "tags": ["type:lib"],
     "projectType": "library",
     "targets": {
         "build": {

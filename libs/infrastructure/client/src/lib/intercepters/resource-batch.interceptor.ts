@@ -3,7 +3,13 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 
 import {finalize, Observable} from 'rxjs';
 
-import {JsonRpcRequest} from '@ng-arch/infrastructure';
+import {
+    ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN,
+    ArchResourceServiceConfigMap,
+    ArchResourceServiceKind,
+    ArchResourceServiceNotDefineError,
+    JsonRpcRequest,
+} from '@ng-arch/infrastructure';
 
 import {RequestJsonRpcBatch} from '../classes/request-json-rpc-batch';
 import {REQUEST_BATCH_METADATA} from '../tokens/request-batch-metadata';
@@ -12,12 +18,25 @@ import {RequestBatchMetadata} from '../types';
 
 @Injectable()
 export class ArchResourceBatchInterceptor implements HttpInterceptor {
-    constructor(@Inject(REQUEST_BATCH_MAP) private readonly batches: Map<string, RequestJsonRpcBatch>) {}
+    private readonly url: string;
+
+    constructor(
+        @Inject(REQUEST_BATCH_MAP) private readonly batches: Map<string, RequestJsonRpcBatch>,
+        @Inject(ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN) private readonly config: ArchResourceServiceConfigMap,
+    ) {
+        const gateway = this.config.get(ArchResourceServiceKind.ApiGateway);
+
+        if (gateway === undefined) {
+            throw new ArchResourceServiceNotDefineError(ArchResourceServiceKind.ApiGateway);
+        }
+
+        this.url = gateway.prefix;
+    }
 
     intercept(req: HttpRequest<JsonRpcRequest<unknown>>, delegate: HttpHandler): Observable<HttpEvent<unknown>> {
         const metadata = req.context.get(REQUEST_BATCH_METADATA);
 
-        if (!req.url.includes('/api/gateway') || req.method.toUpperCase() !== 'POST' || metadata === null) {
+        if (!req.url.includes(this.url) || req.method.toUpperCase() !== 'POST' || metadata === null) {
             return delegate.handle(req);
         }
 

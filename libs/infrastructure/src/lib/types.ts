@@ -5,6 +5,11 @@ export enum ArchResourceMethod {
     Patch = 'PATCH',
     Delete = 'DELETE',
 }
+
+export enum ArchResourceServiceKind {
+    ApiGateway = 'api-gateway',
+}
+
 export type ArchResourceServiceConfig = {
     protocol: 'http' | 'https';
     host: string;

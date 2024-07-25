@@ -1,4 +1,5 @@
 import {HttpClient, HttpErrorResponse, HttpEvent, HttpRequest, HttpResponse} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 
 import {catchError, filter, map, Observable, throwError} from 'rxjs';
 
@@ -9,6 +10,7 @@ import {ArchResourceUrlFactory} from '../interfaces/resource-url-factory';
 import {ArchResourceMethod, ArchResourceServiceConfig, ArchResourceServiceConfigMap} from '../types';
 import {ArchResourceServiceNotDefineError} from '../errors/resource-service-not-define.error';
 
+@Injectable()
 export abstract class ArchResourceAbstract<RequestParams extends Record<string, string | number> | void, ResponseData>
     implements ArchResource<RequestParams, ResponseData>
 {

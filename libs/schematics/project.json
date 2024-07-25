@@ -47,5 +47,5 @@
             }
         }
     },
-    "tags": ["type:lib"]
+    "tags": ["type:lib", "scope:public"]
 }

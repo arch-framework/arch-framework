@@ -15,6 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@ng-arch/application": ["libs/application/src/index.ts"],
             "@ng-arch/common": ["libs/common/src/index.ts"],
             "@ng-arch/infrastructure": ["libs/infrastructure/src/index.ts"],
             "@ng-arch/infrastructure/client": ["libs/infrastructure/client/src/index.ts"],

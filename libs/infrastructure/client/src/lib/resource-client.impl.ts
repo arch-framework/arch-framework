@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpContext, HttpRequest} from '@angular/common/http';
 
 import {v4 as uuid} from 'uuid';
@@ -34,13 +34,13 @@ export class ArchResourceClientImpl extends ArchResourceAbstract<ArchResourceCli
 
     override endpoint = '';
 
-    constructor(
-        http: HttpClient,
-        @Inject(ArchResourceUrlFactoryToken) url: ArchResourceUrlFactory,
-        @Inject(ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN) config: ArchResourceServiceConfigMap,
-        @Inject(ArchLoggerToken) logger: ArchLogger,
-    ) {
-        super(http, url, config, logger);
+    constructor() {
+        super(
+            inject(HttpClient),
+            inject<ArchResourceUrlFactory>(ArchResourceUrlFactoryToken),
+            inject<ArchResourceServiceConfigMap>(ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN),
+            inject<ArchLogger>(ArchLoggerToken),
+        );
     }
 
     override prepare(

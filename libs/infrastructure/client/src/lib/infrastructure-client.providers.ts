@@ -1,4 +1,4 @@
-import {EnvironmentProviders, makeEnvironmentProviders, Type} from '@angular/core';
+import {EnvironmentProviders, makeEnvironmentProviders, Provider, Type} from '@angular/core';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import {
@@ -21,10 +21,7 @@ import {REQUEST_BATCH_MAP} from './tokens/request-batch-map';
 import {ArchResourceBatchInterceptor} from './intercepters/resource-batch.interceptor';
 import {ArchResourceClientImpl} from './resource-client.impl';
 
-export function provideArchInfrastructureClient(
-    resources: Type<ArchResource<unknown, unknown>>[],
-    feature: ArchInfrastructureClientFeatures,
-): EnvironmentProviders {
+export function provideArchInfrastructureClient(feature: ArchInfrastructureClientFeatures): EnvironmentProviders {
     return makeEnvironmentProviders([
         {
             provide: ArchResourceUrlFactoryToken,
@@ -34,14 +31,26 @@ export function provideArchInfrastructureClient(
             provide: ArchLoggerToken,
             useClass: ArchLoggerNoop,
         },
-        ...feature(resources).providers,
+        ...feature().providers,
     ]);
 }
 
-export function withApiGateway(
-    gateway: ArchResourceServiceConfig,
-): (resources: Type<ArchResource<unknown, unknown>>[]) => ArchInfrastructureClientGatewayFeature {
-    return (resources: Type<ArchResource<unknown, unknown>>[]) => ({
+export function provideArchResourcesForApiGateway(...resources: Type<ArchResource<unknown, unknown>>[]): Provider[] {
+    return resources.map(resource => ({
+        provide: resource,
+        useClass: ArchResourceClientImpl,
+    }));
+}
+
+export function provideArchResources(...resources: Type<ArchResource<unknown, unknown>>[]): Provider[] {
+    return resources.map(resource => ({
+        provide: resource,
+        useClass: resource,
+    }));
+}
+
+export function withApiGateway(gateway: ArchResourceServiceConfig): () => ArchInfrastructureClientGatewayFeature {
+    return () => ({
         kind: ArchInfrastructureClientFeatureKind.ProvideGateway,
         providers: [
             {
@@ -57,28 +66,20 @@ export function withApiGateway(
                 useClass: ArchResourceBatchInterceptor,
                 multi: true,
             },
-            ...resources.map(resource => ({
-                provide: resource,
-                useClass: ArchResourceClientImpl,
-            })),
         ],
     });
 }
 
 export function withResourceServiceMap(
     services: Record<string, ArchResourceServiceConfig>,
-): (resources: Type<ArchResource<unknown, unknown>>[]) => ArchInfrastructureClientResourceServiceMapFeature {
-    return (resources: Type<ArchResource<unknown, unknown>>[]) => ({
+): () => ArchInfrastructureClientResourceServiceMapFeature {
+    return () => ({
         kind: ArchInfrastructureClientFeatureKind.ProvideResourceServiceMap,
         providers: [
             {
                 provide: ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN,
                 useValue: new Map(Object.entries(services)),
             },
-            ...resources.map(resource => ({
-                provide: resource,
-                useClass: resource,
-            })),
         ],
     });
 }

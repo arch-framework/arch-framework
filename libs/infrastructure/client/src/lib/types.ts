@@ -1,6 +1,4 @@
-import {Provider, Type} from '@angular/core';
-
-import {ArchResource} from '@ng-arch/infrastructure';
+import {Provider} from '@angular/core';
 
 export type RequestBatchMetadata = {
     id: string;
@@ -24,5 +22,5 @@ export type ArchInfrastructureClientResourceServiceMapFeature =
     ArchInfrastructureClientFeature<ArchInfrastructureClientFeatureKind.ProvideResourceServiceMap>;
 
 export type ArchInfrastructureClientFeatures =
-    | ((resources: Type<ArchResource<unknown, unknown>>[]) => ArchInfrastructureClientGatewayFeature)
-    | ((resources: Type<ArchResource<unknown, unknown>>[]) => ArchInfrastructureClientResourceServiceMapFeature);
+    | (() => ArchInfrastructureClientGatewayFeature)
+    | (() => ArchInfrastructureClientResourceServiceMapFeature);

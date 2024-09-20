@@ -5,10 +5,8 @@ import {v4 as uuid} from 'uuid';
 
 import {ArchLogger, ArchLoggerToken} from '@ng-arch/common';
 import {
-    ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN,
     ArchResourceAbstract,
     ArchResourceMethod,
-    ArchResourceServiceConfigMap,
     ArchResourceServiceKind,
     ArchResourceUrlFactory,
     ArchResourceUrlFactoryToken,
@@ -38,7 +36,6 @@ export class ArchResourceClientImpl extends ArchResourceAbstract<ArchResourceCli
         super(
             inject(HttpClient),
             inject<ArchResourceUrlFactory>(ArchResourceUrlFactoryToken),
-            inject<ArchResourceServiceConfigMap>(ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN),
             inject<ArchLogger>(ArchLoggerToken),
         );
     }

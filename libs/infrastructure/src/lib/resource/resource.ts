@@ -7,8 +7,7 @@ import {ArchLogger} from '@ng-arch/common';
 
 import {ArchResource} from '../interfaces/resource';
 import {ArchResourceUrlFactory} from '../interfaces/resource-url-factory';
-import {ArchResourceMethod, ArchResourceServiceConfig, ArchResourceServiceConfigMap} from '../types';
-import {ArchResourceServiceNotDefineError} from '../errors/resource-service-not-define.error';
+import {ArchResourceMethod} from '../types';
 
 @Injectable()
 export abstract class ArchResourceAbstract<RequestParams extends Record<string, unknown> | void, ResponseData>
@@ -24,25 +23,16 @@ export abstract class ArchResourceAbstract<RequestParams extends Record<string, 
 
     private readonly urlFactory: ArchResourceUrlFactory;
 
-    private readonly configMap: ArchResourceServiceConfigMap;
-
     protected readonly logger: ArchLogger;
 
-    constructor(
-        http: HttpClient,
-        urlFactory: ArchResourceUrlFactory,
-        configMap: ArchResourceServiceConfigMap,
-        logger: ArchLogger,
-    ) {
+    constructor(http: HttpClient, urlFactory: ArchResourceUrlFactory, logger: ArchLogger) {
         this.http = http;
         this.urlFactory = urlFactory;
-        this.configMap = configMap;
         this.logger = logger;
     }
 
     request(params: RequestParams): Observable<ResponseData> {
-        const config = this.getConfig(this.configMap);
-        const url = this.urlFactory.create(config, this.endpoint, params);
+        const url = this.urlFactory.create(this.service, this.endpoint, params);
         const baseRequest = new HttpRequest<void>(this.method, url, undefined, {withCredentials: true});
         const request = this.prepare(baseRequest, params) as HttpRequest<void>;
 
@@ -67,15 +57,5 @@ export abstract class ArchResourceAbstract<RequestParams extends Record<string, 
     protected error(error: HttpErrorResponse, params: RequestParams): Observable<never> {
         this.logger.warn(error, params);
         return throwError(() => error);
-    }
-
-    private getConfig(configMap: ArchResourceServiceConfigMap): ArchResourceServiceConfig {
-        const config = configMap.get(this.service);
-
-        if (config === undefined) {
-            throw new ArchResourceServiceNotDefineError(this.service);
-        }
-
-        return config;
     }
 }

@@ -5,6 +5,6 @@ export abstract class ArchResourceUrlFactoryToken implements ArchResourceUrlFact
     public abstract create(
         service: ArchResourceServiceConfig,
         endpoint: string,
-        params: Record<string, string | number>,
+        params: Record<string, unknown>,
     ): string;
 }

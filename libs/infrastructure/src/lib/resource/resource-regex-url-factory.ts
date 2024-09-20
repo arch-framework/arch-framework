@@ -6,7 +6,7 @@ export class ArchResourceRegexUrlFactory extends ArchResourceUrlFactoryToken {
     create(
         {protocol, host, port, prefix}: ArchResourceServiceConfig,
         endpoint: string,
-        params: void | Record<string, string | number>,
+        params: void | Record<string, unknown>,
     ): string {
         endpoint = endpoint.replace(/:([a-zA-z]+)?/g, (_: string, key: string) => {
             const param = (params ?? {})[key];

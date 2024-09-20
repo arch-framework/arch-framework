@@ -11,7 +11,7 @@ import {ArchResourceMethod, ArchResourceServiceConfig, ArchResourceServiceConfig
 import {ArchResourceServiceNotDefineError} from '../errors/resource-service-not-define.error';
 
 @Injectable()
-export abstract class ArchResourceAbstract<RequestParams extends Record<string, string | number> | void, ResponseData>
+export abstract class ArchResourceAbstract<RequestParams extends Record<string, unknown> | void, ResponseData>
     implements ArchResource<RequestParams, ResponseData>
 {
     protected abstract readonly service: string;

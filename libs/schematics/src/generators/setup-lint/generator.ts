@@ -3,6 +3,7 @@ import {formatFiles, Tree} from '@nx/devkit';
 import {SetupLintGeneratorSchema} from './schema';
 import {addDepsConstraints} from '../../utils';
 import {
+    APP_TYPE_LIBRARY_TAG,
     DOMAIN_TYPE_LIBRARY_TAG,
     FEATURE_TYPE_LIBRARY_TAG,
     SHARED_DOMAIN_LIBRARY_TAG,
@@ -12,6 +13,15 @@ import {
 
 export async function setupLintGenerator(tree: Tree, _: SetupLintGeneratorSchema) {
     addDepsConstraints(tree, [
+        {
+            sourceTag: APP_TYPE_LIBRARY_TAG,
+            onlyDependOnLibsWithTags: [
+                FEATURE_TYPE_LIBRARY_TAG,
+                UI_TYPE_LIBRARY_TAG,
+                DOMAIN_TYPE_LIBRARY_TAG,
+                UTIL_TYPE_LIBRARY_TAG,
+            ],
+        },
         {
             sourceTag: FEATURE_TYPE_LIBRARY_TAG,
             onlyDependOnLibsWithTags: [UI_TYPE_LIBRARY_TAG, DOMAIN_TYPE_LIBRARY_TAG, UTIL_TYPE_LIBRARY_TAG],

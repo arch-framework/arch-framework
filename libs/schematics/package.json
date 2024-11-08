@@ -21,9 +21,9 @@
     },
     "peerDependencies": {
         "@angular-devkit/core": "^17.0.8 || ^18.0.0",
-        "@nx/angular": "^17.3.2",
-        "@nx/devkit": "^17.3.2",
-        "@nx/eslint-plugin": "^17.3.2",
+        "@nx/angular": "^17.3.2 || ^18.0.0 || ^19.0.0",
+        "@nx/devkit": "^17.3.2 || ^18.0.0 || ^19.0.0",
+        "@nx/eslint-plugin": "^17.3.2 || ^18.0.0 || ^19.0.0",
         "@schematics/angular": "^17.0.8 || ^18.0.0"
     },
     "generators": "./generators.json"

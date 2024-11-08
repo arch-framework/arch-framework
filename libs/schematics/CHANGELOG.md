@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.23](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.22...v0.1.0-alpha.23) (2024-11-08)
+
+### Features
+
+- **setup-lint:** add application type and it dependencies
+  ([52eb901](https://github.com/arch-framework/arch-framework/commit/52eb901c66795f0086f2b83c376f6b7ea1bbd7bd))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.22](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.21...v0.1.0-alpha.22) (2024-11-08)
 
 **Note:** Version bump only for package @ng-arch/schematics

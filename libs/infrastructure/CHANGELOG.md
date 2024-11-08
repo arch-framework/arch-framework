@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.23](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.22...v0.1.0-alpha.23) (2024-11-08)
+
+**Note:** Version bump only for package @ng-arch/infrastructure
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.22](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.21...v0.1.0-alpha.22) (2024-11-08)
 
 **Note:** Version bump only for package @ng-arch/infrastructure

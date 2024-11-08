@@ -1,7 +1,6 @@
 import {EnvironmentProviders, makeEnvironmentProviders} from '@angular/core';
 
-import {ArchIdGeneratorToken} from './tokens/id-generator';
-import {ArchIdGeneratorRandomTimestamp} from './classes/id-generator/id-generator-random-timestamp';
+import {ArchIdGeneratorToken, ArchIdGeneratorRandomTimestamp} from '@ng-arch/common';
 
 export function provideArchCommonDependency(): EnvironmentProviders {
     return makeEnvironmentProviders([

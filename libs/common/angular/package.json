@@ -1,5 +1,5 @@
 {
-    "name": "@ng-arch/common",
+    "name": "@ng-arch/common/angular",
     "version": "0.1.0-alpha.23",
     "repository": {
         "type": "git",
@@ -13,5 +13,9 @@
     "sideEffects": false,
     "dependencies": {
         "tslib": "^2.3.0"
+    },
+    "peerDependencies": {
+        "@angular/core": "^17.0.8 || ^18.0.0",
+        "@ng-arch/common": "^0.1.0"
     }
 }

@@ -17,6 +17,7 @@
         "paths": {
             "@ng-arch/application": ["libs/application/src/index.ts"],
             "@ng-arch/common": ["libs/common/src/index.ts"],
+            "@ng-arch/common/angular": ["libs/common/angular/src/index.ts"],
             "@ng-arch/infrastructure": ["libs/infrastructure/src/index.ts"],
             "@ng-arch/infrastructure/client": ["libs/infrastructure/client/src/index.ts"],
             "@ng-arch/infrastructure/server": ["libs/infrastructure/server/src/index.ts"],

@@ -2,10 +2,15 @@ import {HttpEvent, HttpHandler, HttpRequest, HttpResponse} from '@angular/common
 
 import {catchError, filter, finalize, first, map, Observable, ReplaySubject, switchMap, tap, throwError} from 'rxjs';
 
-import {JsonRpcRequest, JsonRpcResponse} from '@ng-arch/infrastructure';
+import {
+    isJsonRpcError,
+    isJsonRpcRequest,
+    isJsonRpcResponse,
+    JsonRpcRequest,
+    JsonRpcResponse,
+} from '@ng-arch/infrastructure';
 
 import {JsonRpcParseError} from '../errors/json-rpc-parse.error';
-import {isJsonRpcError, isJsonRpcRequest, isJsonRpcResponse} from '../../../../src/lib/utils';
 
 export class RequestJsonRpcBatch {
     static create(capacity: number): RequestJsonRpcBatch {

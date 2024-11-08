@@ -1,7 +1,7 @@
 import {faker} from '@faker-js/faker';
 import {Sync as Factory} from 'factory.ts';
 
-import {JsonRpcRequest, JsonRpcResponse} from '../types';
+import {JsonRpcRequest, JsonRpcResponse} from '@ng-arch/infrastructure';
 
 export const JsonRpcRequestFactory = Factory.makeFactory<JsonRpcRequest<unknown>>({
     jsonrpc: '2.0',

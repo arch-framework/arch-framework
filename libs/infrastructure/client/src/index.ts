@@ -1,2 +1,1 @@
-export {ArchInfrastructureClientModule} from './lib/client.module';
-export {ArchResourceClient} from './lib/resource-client.imp';
+export * from './lib/infrastructure-client.providers';

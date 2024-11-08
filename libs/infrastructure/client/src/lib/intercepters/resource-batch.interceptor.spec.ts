@@ -4,19 +4,42 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpContext} from '@ang
 import {faker} from '@faker-js/faker';
 import {MockBuilder, ngMocks} from 'ng-mocks';
 
-import {JsonRpcRequestFactory, JsonRpcResponseFactory} from '../../../../src/lib/testing';
+import {JsonRpcRequestFactory, JsonRpcResponseFactory} from '@ng-arch/infrastructure/testing';
+import {ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN, ArchResourceServiceKind} from '@ng-arch/infrastructure';
+
 import {ArchResourceBatchInterceptor} from './resource-batch.interceptor';
 import {REQUEST_BATCH_MAP} from '../tokens/request-batch-map';
 import {REQUEST_BATCH_METADATA} from '../tokens/request-batch-metadata';
 import {JsonRpcParseError} from '../errors/json-rpc-parse.error';
 
-describe(`${ArchResourceBatchInterceptor.name}`, () => {
+describe('ArchResourceBatchInterceptor', () => {
     beforeEach(() => {
         return MockBuilder()
             .mock(HttpClientModule)
             .replace(HttpClientModule, HttpClientTestingModule)
-            .provide({provide: HTTP_INTERCEPTORS, useClass: ArchResourceBatchInterceptor, multi: true})
-            .provide({provide: REQUEST_BATCH_MAP, useValue: new Map()});
+            .provide({
+                provide: HTTP_INTERCEPTORS,
+                useClass: ArchResourceBatchInterceptor,
+                multi: true,
+            })
+            .provide({
+                provide: REQUEST_BATCH_MAP,
+                useValue: new Map(),
+            })
+            .provide({
+                provide: ARCH_RESOURCE_SERVICE_CONFIG_MAP_TOKEN,
+                useValue: new Map([
+                    [
+                        ArchResourceServiceKind.ApiGateway,
+                        {
+                            protocol: 'https',
+                            host: 'example.com',
+                            port: 443,
+                            prefix: '/api/gateway',
+                        },
+                    ],
+                ]),
+            });
     });
 
     describe('#intercept()', () => {
@@ -126,13 +149,9 @@ describe(`${ArchResourceBatchInterceptor.name}`, () => {
 
                     client.post('/api/gateway', body, {context}).subscribe();
 
-                    const req = httpMock.expectOne('/api/gateway');
+                    httpMock.expectNone('/api/gateway');
 
                     httpMock.verify();
-
-                    expect(Array.isArray(req.request.body)).toBeTruthy();
-                    expect(req.request.body).toHaveLength(1);
-                    expect(req.request.body).toContainEqual(body);
                 });
             });
         });

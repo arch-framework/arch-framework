@@ -1,0 +1,51 @@
+{
+    "$schema": "https://json-schema.org/schema",
+    "$id": "Ui",
+    "title": "",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Name of the UI library",
+            "$default": {
+                "$source": "argv",
+                "index": 0
+            },
+            "x-prompt": "What name would you like to use?"
+        },
+        "shared": {
+            "type": "boolean",
+            "description": "Whether the library should be shared across all domains.",
+            "default": false
+        },
+        "domain": {
+            "type": "string",
+            "description": "Domain name, if the library belongs to a certain domain."
+        },
+        "directory": {
+            "type": "string",
+            "description": "Subpath of the domain within libs directory"
+        },
+        "publishable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Generate a publishable library.",
+            "x-priority": "important"
+        },
+        "buildable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Generate a buildable library.",
+            "x-priority": "important"
+        },
+        "importPath": {
+            "type": "string",
+            "description": "The library name used to import it, like `@myorg/my-awesome-lib`. Must be a valid npm name."
+        },
+        "tags": {
+            "type": "string",
+            "description": "Add tags to the library (used for linting)."
+        }
+    },
+    "required": ["name"]
+}

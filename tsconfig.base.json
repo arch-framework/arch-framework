@@ -15,13 +15,17 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@ng-arch/application": ["libs/application/src/index.ts"],
+            "@ng-arch/cache": ["libs/cache/src/index.ts"],
             "@ng-arch/common": ["libs/common/src/index.ts"],
+            "@ng-arch/common/angular": ["libs/common/angular/src/index.ts"],
             "@ng-arch/infrastructure": ["libs/infrastructure/src/index.ts"],
             "@ng-arch/infrastructure/client": ["libs/infrastructure/client/src/index.ts"],
             "@ng-arch/infrastructure/server": ["libs/infrastructure/server/src/index.ts"],
-            "@ng-arch/infrastructure/testing": ["libs/infrastructure/src/lib/testing/index.ts"],
+            "@ng-arch/infrastructure/testing": ["libs/infrastructure/testing/src/index.ts"],
             "@ng-arch/message-broker": ["libs/message-broker/src/index.ts"],
-            "@ng-arch/message-broker/testing": ["libs/message-broker/testing/src/index.ts"]
+            "@ng-arch/message-broker/testing": ["libs/message-broker/testing/src/index.ts"],
+            "@ng-arch/schematics": ["libs/schematics/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

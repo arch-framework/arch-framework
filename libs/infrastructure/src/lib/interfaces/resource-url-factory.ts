@@ -1,9 +1,3 @@
-import {ArchResourceServiceConfig} from '../types';
-
 export interface ArchResourceUrlFactory {
-    create(
-        service: ArchResourceServiceConfig,
-        endpoint: string,
-        params: Record<string, string | number> | void,
-    ): string;
+    create(service: string, endpoint: string, params: Record<string, unknown> | void): string;
 }

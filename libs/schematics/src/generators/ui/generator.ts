@@ -13,7 +13,7 @@ import {deleteDefaultGeneratedComponent} from '../../utils';
 import {componentGeneratorOptionsValidator} from '../../utils/component-generator-options-validator';
 
 export async function uiGenerator(tree: Tree, options: UiGeneratorSchema) {
-    componentGeneratorOptionsValidator(options);
+    componentGeneratorOptionsValidator(tree, options);
 
     const nxJsonConfiguration = readJsonFile<NxJsonConfiguration>(`${tree.root}/nx.json`);
     const globalComponentOptions = get(

@@ -1,0 +1,16 @@
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
+
+import {<%= facadeClassName %>} from '@<%= workspaceName %>/<%= domain %>/domain';
+
+@Component({
+    selector: '<%= selector %>',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './<%= fileName %>.component.html',
+    styleUrl: './<%= fileName %>.component.<%= style %>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class <%= className %> {
+    private facade = inject(<%= facadeClassName %>);
+}

@@ -14,12 +14,12 @@ export async function domainGenerator(tree: Tree, options: DomainGeneratorSchema
     const nxJsonConfiguration = readJsonFile<NxJsonConfiguration>(`${tree.root}/nx.json`);
     const globalLibraryOptions = get(nxJsonConfiguration, ['generators', '@nx/angular:library'], {});
     const libName = strings.dasherize(options.name);
-    const projectRoot = `libs/${libName}/domain`;
+    const directory = `libs/${libName}`;
+    const projectRoot = `${directory}/domain`;
 
     await libraryGenerator(tree, {
-        name: `domain-${libName}`,
-        directory: projectRoot,
-        projectNameAndRootFormat: 'as-provided',
+        name: `domain`,
+        directory,
         flat: true,
         skipModule: true,
         tags: `domain:${libName},${DOMAIN_TYPE_LIBRARY_TAG}`,

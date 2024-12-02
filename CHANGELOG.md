@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.24](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.23...v0.1.0-alpha.24) (2024-12-02)
+
+### Features
+
+- **cache:** add cache library
+  ([935261a](https://github.com/arch-framework/arch-framework/commit/935261a5e4aca7b1ef7f0e16fb1d6dcdd6c037bc))
+- **common:** add second entry point & define util types
+  ([dcf5825](https://github.com/arch-framework/arch-framework/commit/dcf5825b10020003973ca44dbc993867ff1d9d98))
+- **schematics:** add feature generator
+  ([d5f832e](https://github.com/arch-framework/arch-framework/commit/d5f832ea5d98938e58e8d298f14ad13f4c61d04b))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.23](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.22...v0.1.0-alpha.23) (2024-11-08)
 
 ### Features

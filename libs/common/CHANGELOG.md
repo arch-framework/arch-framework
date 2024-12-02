@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.24](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.23...v0.1.0-alpha.24) (2024-12-02)
+
+### Features
+
+- **common:** add second entry point & define util types
+  ([dcf5825](https://github.com/arch-framework/arch-framework/commit/dcf5825b10020003973ca44dbc993867ff1d9d98))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.23](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.22...v0.1.0-alpha.23) (2024-11-08)
 
 **Note:** Version bump only for package @ng-arch/common

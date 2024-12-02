@@ -1,6 +1,6 @@
 {
     "name": "@ng-arch/cache",
-    "version": "0.1.0-alpha.23",
+    "version": "0.1.0-alpha.24",
     "sideEffects": false,
     "dependencies": {
         "tslib": "^2.6.2"

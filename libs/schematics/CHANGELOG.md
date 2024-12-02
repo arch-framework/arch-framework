@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.24](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.23...v0.1.0-alpha.24) (2024-12-02)
+
+### Features
+
+- **schematics:** add feature generator
+  ([d5f832e](https://github.com/arch-framework/arch-framework/commit/d5f832ea5d98938e58e8d298f14ad13f4c61d04b))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [0.1.0-alpha.23](https://github.com/arch-framework/arch-framework/compare/v0.1.0-alpha.22...v0.1.0-alpha.23) (2024-11-08)
 
 ### Features
